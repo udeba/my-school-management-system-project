@@ -1,4 +1,7 @@
 footer {
   background-color: rgb(63, 64, 65);
-  color: #fdfcfc;
+  color: #0a0a0a;
+}
+.nav-item {
+  display: inline-block;
 }
