@@ -10,3 +10,12 @@ footer {
 .brand {
   max-height: 35px;
 }
+.nav-item {
+  font-weight: normal;
+}
+.nav-card {
+  text-align: right;
+}
+.addbutton {
+  text-align: center;
+}
