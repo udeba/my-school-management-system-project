@@ -31,3 +31,20 @@ const classesData = [
     linkTeacher: "teacherLink",
   },
 ];
+function displayStudents() {
+  let mainContent = document.getElementById("content");
+  mainContent.innerHTML = "";
+  let studentsRow = document.createElement("div");
+  studentsRow.innerHTML = "<h1>Students</h1>";
+  studentData.forEach((student) => {
+    studentsRow.innerHTML += `      
+      <h2>${student.name}</h2>
+      <h3>${student.role}</h3>
+      <p>
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <p>Average Grade: ${student.grade}</p>`;
+  });
+  mainContent.appendChild(studentsRow);
+}
