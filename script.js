@@ -48,3 +48,14 @@ function displayStudents() {
   });
   mainContent.appendChild(studentsRow);
 }
+function formRows() {
+  let mainContent = document.getElementById("content");
+  mainContent.innerHTML = `
+      <form id="addStudentForm">
+          <input type="text" id="studentName" placeholder="Student Name" required>
+          <input type="text" id="studentRole" placeholder="Student Role" required>
+          <input type="number" id="studentGrade" placeholder="Student Grade" required>
+          <button type="submit">Add Student</button>
+      </form>
+  `;
+}
