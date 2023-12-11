@@ -1,0 +1,21 @@
+footer {
+  background-color: rgb(128, 129, 129);
+  color: #0a0a0a;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  position: absolute;
+}
+
+.brand {
+  max-height: 35px;
+}
+.nav-item {
+  font-weight: normal;
+}
+.nav-card {
+  text-align: right;
+}
+.addbutton {
+  text-align: center;
+}
