@@ -19,3 +19,15 @@ footer {
 .addbutton {
   text-align: center;
 }
+.btn-add {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-add i {
+  font-size: 4rem;
+  justify-content: center;
+  color: deepskyblue;
+}
