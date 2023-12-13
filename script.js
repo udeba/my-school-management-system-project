@@ -40,13 +40,15 @@ let oldClassName = "";
 function displayMain() {
   let mainContent = document.getElementById("content");
   // Mevcut içeriği temizle
-  mainContent.innerHTML = "";
+  mainContent.innerHTML = `<div class="container">`;
+  mainContent.innerHTML = "<h1>Welcome Mustafa</h1>";
 
   // Flex container oluştur
   let mainRow = document.createElement("div");
   mainRow.classList.add(
     "d-flex",
     "justify-content-center",
+    "align-items-center",
     "flex-wrap",
     "gap-5"
   );
@@ -81,7 +83,7 @@ function displayClasses() {
   // Mevcut içeriği temizle
   mainContent.innerHTML = `<h1>Classes</h1>`;
 
-  // Flex container oluştur
+  // Flex container oluştur, ortala ve elemenlar arasinda bosluk birak
   let classesRow = document.createElement("div");
   classesRow.classList.add(
     "d-flex",
@@ -107,9 +109,9 @@ function displayClasses() {
     </div>
   </div>
 `;
-    // Burada da fonksiyonları string olarak değil, link olarak eklemek istiyorsanız, uygun HTML yapısını oluşturmalısınız.
   });
   mainContent.appendChild(classesRow);
+  //DOM'a ekledigimiz tum btn-delete classina sahip butonlara erisiyoruz.
 
   const btnDeletes = classesRow.querySelectorAll(".btn-delete");
 
@@ -126,7 +128,7 @@ function displayClasses() {
   });
 
   const btnEdits = classesRow.querySelectorAll(".btn-edit");
-
+  //btnEdits dizi olacagi icin forEach ile bu dizi icindeki her butona addEventListener ile click olayi ekliyoruz,
   btnEdits.forEach((btnEdit) => {
     btnEdit.addEventListener("click", (e) => {
       const btnEdit = e.target.closest(".btn-edit");
@@ -141,6 +143,7 @@ function displayClasses() {
       formClass(foundedClass);
     });
   });
+  //Classes sayfasindaki tum link-students classina sahip linklere erisiyouz.
   const linkStudents = classesRow.querySelectorAll(".link-students");
 
   linkStudents.forEach((link) => {
@@ -150,6 +153,7 @@ function displayClasses() {
       displayStudents();
     });
   });
+  //Classes sayfasindaki tum link-teachers classina sahip linklere erisiyouz.
   const linkTeachers = classesRow.querySelectorAll(".link-teachers");
   linkTeachers.forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -163,7 +167,7 @@ function displayClasses() {
     mode = "add";
     oldClassName = "";
     formClass();
-  }; // 'formRows' fonksiyonunu butona bağla
+  };
   addButton2.classList.add("btn", "btn-add", "mx-auto"); // Bootstrap sınıfları eklendi
   mainContent.appendChild(addButton2);
 }
@@ -183,7 +187,6 @@ function formClass(classObject) {
           </form>
       `;
 
-  //
   document
     .getElementById("addClassForm")
     .addEventListener("submit", function (e) {
@@ -191,6 +194,7 @@ function formClass(classObject) {
 
       const className = document.getElementById("classesName").value;
       const teacherName = document.getElementById("classesTeacher").value;
+      //Butonu bastigimizda eklememi veya guncelleme mi yapacagimizi classMode global degiskeni sayesinde anliyoruz.
 
       if (mode === "add") {
         const newClass = {
@@ -249,6 +253,24 @@ function displayTeachers() {
     // Burada da fonksiyonları string olarak değil, link olarak eklemek istiyorsanız, uygun HTML yapısını oluşturmalısınız.
   });
   mainContent.appendChild(teachersRow);
+
+  const linkStudents = teachersRow.querySelectorAll(".link-students");
+
+  linkStudents.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      displayStudents();
+    });
+  });
+  const linkTeachers = teachersRow.querySelectorAll(".link-classes");
+  linkTeachers.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      displayClasses();
+    });
+  });
+
   const btnDeletes = teachersRow.querySelectorAll(".btn-delete");
   btnDeletes.forEach((btnDelete) => {
     btnDelete.addEventListener("click", function (e) {
@@ -284,7 +306,7 @@ function displayTeachers() {
     mode = "add";
     oldClassName = "";
     formTeacher();
-  }; // 'formRows' fonksiyonunu butona bağla
+  };
   addButton3.classList.add("btn", "btn-add", "mt-3", "mx-auto"); // Bootstrap sınıfları eklendi
   mainContent.appendChild(addButton3);
 }
@@ -304,7 +326,6 @@ function formTeacher(classObject) {
       </form>
   `;
 
-  //
   document
     .getElementById("addTeacherForm")
     .addEventListener("submit", function (e) {
@@ -326,10 +347,9 @@ function formTeacher(classObject) {
         updatedTeacher.name = teacherName;
         updatedTeacher.role = teacherRole;
       }
-      //
+
       localStorage.setItem("teachersData", JSON.stringify(teachersData));
 
-      //
       displayTeachers();
     });
 }
@@ -364,7 +384,6 @@ function displayStudents() {
     </div>
   </div>
 `;
-    // Burada da fonksiyonları string olarak değil, link olarak eklemek istiyorsanız, uygun HTML yapısını oluşturmalısınız.
   });
 
   mainContent.appendChild(studentsRow);
@@ -426,7 +445,6 @@ function formStudent(classObject) {
           </form>
       `;
 
-  //
   document
     .getElementById("addStudentForm")
     .addEventListener("submit", function (e) {

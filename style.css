@@ -47,3 +47,7 @@ footer {
   bottom: 50px;
   position: fixed;
 }
+.btn-delete i,
+.btn-edit i {
+  font-size: 1.5rem;
+}
