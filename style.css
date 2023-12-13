@@ -1,3 +1,8 @@
+body {
+  position: relative;
+  padding-bottom: 50px;
+  min-height: 100vh;
+}
 footer {
   background-color: rgb(128, 129, 129);
   color: #0a0a0a;
@@ -5,6 +10,7 @@ footer {
   width: 100%;
   left: 0;
   position: absolute;
+  height: 50px;
 }
 
 .brand {
@@ -24,10 +30,20 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .btn-add i {
   font-size: 4rem;
   justify-content: center;
-  color: deepskyblue;
+  color: rgb(24, 173, 223);
+}
+.card-home {
+  text-align: center;
+  border-color: black;
+}
+.info {
+  bottom: 50px;
+  position: fixed;
 }
